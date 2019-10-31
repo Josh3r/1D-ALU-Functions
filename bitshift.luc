@@ -12,7 +12,7 @@ module bitshift (
       shift = inpa << inpb[3:0];
       b01: //shift right
       shift = inpa >> inpb[3:0];
-      b11:
+      b11: //shift right arithmetic
       shift = inpa >>> inpb[3:0];
       default:
       shift = inpa;
