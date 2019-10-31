@@ -12,8 +12,8 @@ module sixteenbitadder (
     always{
       xordb = b ^ 16x{alufn[0]}; // xors each B input to alufn0, whereby '^' serves as logic gate XOR    
         case(alufn[1:0]){
-        b0: sum = a+b; // addition when alufn0 set to 0
-        b1: sum = a-b; // subtraction when alufn0 set to 1
+        b00: sum = a+b; // addition when alufn0 set to 0
+        b01: sum = a-b; // subtraction when alufn0 set to 1
         default: sum = a+b;
       }
       outputsum = sum[15:0]; // output sum is 16 bits
