@@ -17,14 +17,8 @@ module sixteenbitadder (
         default: sum = a+b;
       }
       outputsum = sum[15:0]; // output sum is 16 bits
-      z = 0; 
-      if(sum == 16x{0}){
-        z = 1; // If S[0:15], ie: all S outputs are 0, z is true(1).
-      }
+      z = ~|sum[15:0]; // z = 1(true) if all sum bits are 0s.
       n = sum[15]; // n is true(1) when sum is negative(MSB of sum would be 1)  
-      v = 0;
-      if(sum[16]==1){
-        v = 1; // v is 1 if overflow occurs, so v = 1 if there is a 16th bit(overflow).
-      }
+      v = (a[15] & xordb[15] & ~sum[15]) | (~a[15] & ~xordb[15] & sum[15]); // v = 1(true) if overflow occurs
     }
   }
